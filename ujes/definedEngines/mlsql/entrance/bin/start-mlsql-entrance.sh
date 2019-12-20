@@ -16,10 +16,10 @@ if [[ -f "${DWS_ENGINE_MANAGER_PID}" ]]; then
 fi
 
 export DWS_ENGINE_MANAGER_LOG_PATH=$HOME/logs
-export DWS_ENGINE_MANAGER_HEAP_SIZE="1G"
+export DWS_ENGINE_MANAGER_HEAP_SIZE="200m"
 export DWS_ENGINE_MANAGER_JAVA_OPTS="-Xms$DWS_ENGINE_MANAGER_HEAP_SIZE -Xmx$DWS_ENGINE_MANAGER_HEAP_SIZE -XX:+UseG1GC -XX:MaxPermSize=500m -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=11716"
-
-nohup java $DWS_ENGINE_MANAGER_JAVA_OPTS -cp $HOME/conf:$HOME/lib/* com.webank.wedatasphere.linkis.DataWorkCloudApplication 2>&1 > $DWS_ENGINE_MANAGER_LOG_PATH/linkis.out &
+#export DEBUG_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=10087"
+nohup java $DWS_ENGINE_MANAGER_JAVA_OPTS  -cp $HOME/conf:$HOME/lib/* com.webank.wedatasphere.linkis.DataWorkCloudApplication 2>&1 > $DWS_ENGINE_MANAGER_LOG_PATH/linkis.out &
 pid=$!
 if [[ -z "${pid}" ]]; then
     echo "MLSQL Entrance start failed!"

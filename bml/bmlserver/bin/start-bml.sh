@@ -17,7 +17,7 @@ fi
 
 export DWS_ENTRANCE_LOG_PATH=$HOE/logs
 export DWS_ENTRANCE_DEBUG="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=10059"
-export DWS_ENTRANCE_HEAP_SIZE="2G"
+export DWS_ENTRANCE_HEAP_SIZE="200m"
 export DWS_ENTRANCE_JAVA_OPTS="-Xms$DWS_ENTRANCE_HEAP_SIZE -Xmx$DWS_ENTRANCE_HEAP_SIZE -XX:+UseG1GC -XX:MaxPermSize=500m $DWS_ENTRANCE_DEBUG"
 
 nohup java $DWS_ENTRANCE_JAVA_OPTS -cp $HOE/conf:$HOE/lib/* com.webank.wedatasphere.linkis.DataWorkCloudApplication 2>&1 > $DWS_ENTRANCE_LOG_PATH/linkis-shellentrance.out &
