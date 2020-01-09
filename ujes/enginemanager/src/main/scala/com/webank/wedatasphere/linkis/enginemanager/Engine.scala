@@ -24,6 +24,9 @@ import com.webank.wedatasphere.linkis.resourcemanager.Resource
   */
 abstract class Engine {
 
+  /**
+    * 资源对象
+    */
   private var resource: Resource = _
 
   def setResource(resource: Resource): Unit = this.resource = resource
@@ -47,6 +50,11 @@ abstract class Engine {
   def getCreateTime: Long
   def getInitedTime: Long
   def getTicketId: String
+
+  /**
+    * 返回引擎状态
+    * @return
+    */
   def getState: EngineState
 
   override def toString: String = getClass.getSimpleName + s"(port: $getPort, creator: $getCreator, user: $getUser)"

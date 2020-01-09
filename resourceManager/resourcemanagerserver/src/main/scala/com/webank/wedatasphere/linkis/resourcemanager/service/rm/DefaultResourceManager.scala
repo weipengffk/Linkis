@@ -62,8 +62,8 @@ class DefaultResourceManager extends ResourceManager with Logging with Initializ
 
   override def afterPropertiesSet(): Unit = {
     requestResourceServices = Array(new DefaultReqResourceService(userMetaData, userResourceRecordService, moduleResourceRecordService, userResourceManager, moduleResourceManager),
-      new YarnReqResourceService(userMetaData, userResourceRecordService, moduleResourceRecordService, userResourceManager, moduleResourceManager),
-      new DriverAndYarnReqResourceService(userMetaData, userResourceRecordService, moduleResourceRecordService, userResourceManager, moduleResourceManager))
+                                       new YarnReqResourceService(userMetaData, userResourceRecordService, moduleResourceRecordService, userResourceManager, moduleResourceManager),
+                              new DriverAndYarnReqResourceService(userMetaData, userResourceRecordService, moduleResourceRecordService, userResourceManager, moduleResourceManager))
 
     future = Utils.defaultScheduler.scheduleAtFixedRate(new Runnable {
       override def run(): Unit = {

@@ -41,6 +41,12 @@ abstract class AbstractEngineManager extends EngineManager with Logging {
 
   override def requestEngine(request: RequestEngine): Option[Engine] = requestEngine(request, 0)
 
+  /**
+    * 获取引擎
+    * @param request
+    * @param duration
+    * @return
+    */
   override def requestEngine(request: RequestEngine, duration: Long): Option[Engine] = {
     info("User " + request.user + " wants to request a new engine, messages: " + request)
     val startTime = System.currentTimeMillis
@@ -110,5 +116,6 @@ abstract class AbstractEngineManager extends EngineManager with Logging {
 
 }
 object AbstractEngineManager {
+  // 创建引擎管理进程
   private val executor = Utils.newCachedExecutionContext(EngineManagerConfiguration.ENGINE_MANAGER_MAX_THREADS.getValue, "Engine-Manager-Thread-")
 }

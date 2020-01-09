@@ -24,9 +24,35 @@ import com.webank.wedatasphere.linkis.protocol.engine.RequestEngine
   * Created by johnnwang on 2018/9/6.
   */
 trait ProcessEngineBuilder extends Logging {
+  /**
+    * 设置端口
+    * @param port
+    */
   def setPort(port: Int): Unit
+
+  /**
+    * 引擎构建
+    * @param engineRequest  引擎请求资源
+    * @param request  引擎对象
+    */
   def build(engineRequest: EngineResource, request: RequestEngine): Unit
+
+  /**
+    * 获取引擎资源
+    * @return
+    */
   def getEngineResource: EngineResource
+
+  /**
+    * 获取引擎对象
+    * @return
+    */
   def getRequestEngine: RequestEngine
+
+  /**
+    * 启动进程
+    * @param args
+    * @return
+    */
   def start(args: Array[String]): Process
 }

@@ -26,6 +26,9 @@ class CommonProcessEngine(override val processBuilder: ProcessEngineBuilder,
 
   def this(processBuilder: ProcessEngineBuilder, dwcArgumentsParser: DWCArgumentsParser) = this(processBuilder, dwcArgumentsParser, -1)
 
+  /**
+    * scala语法，下划线标识默认值。 String默认值类型为null
+    */
   private var user: String = _
 
   def setUser(user: String) = this.user = user

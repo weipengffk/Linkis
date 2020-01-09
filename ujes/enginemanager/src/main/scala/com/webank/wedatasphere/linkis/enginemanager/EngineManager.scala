@@ -29,6 +29,10 @@ abstract class EngineManager {
     */
   def registerResources(): ModuleInfo
 
+  /**
+    * 获取引擎内容
+    * @return
+    */
   def getEngineManagerContext: EngineManagerContext
 
   def requestEngine(request: RequestEngine): Option[Engine]

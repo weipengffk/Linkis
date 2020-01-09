@@ -25,13 +25,20 @@ import scala.collection.mutable.ArrayBuffer
   * Created by enjoyyin on 2018/9/26.
   */
 object DWCArgumentsParser {
+  //dws配置
   protected val DWC_CONF = "--dwc-conf"
+  //spring配置
   protected val SPRING_CONF = "--spring-conf"
   private var dwcOptionMap = Map.empty[String, String]
 
   private[linkis] def setDWCOptionMap(dwcOptionMap: Map[String, String]) = this.dwcOptionMap = dwcOptionMap
   def getDWCOptionMap = dwcOptionMap
 
+  /**
+    * 解析
+    * @param args
+    * @return
+    */
   def parse(args: Array[String]): DWCArgumentsParser = {
     val keyValueRegex = "([^=]+)=(.+)".r
     var i = 0

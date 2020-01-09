@@ -105,6 +105,13 @@ class EngineFactoryImpl(rmClient: ResourceManagerClient) extends EngineFactory w
 
   override def deleteAll(creator: String): Unit = portToEngines synchronized portToEngines.filter{case (_, engine) => engine.getCreator == creator}.foreach(f => delete(f._2))
 
+  /**
+    * 删除引擎
+    * 1：删除集合
+    * 2：关掉引擎
+    * 3：释放资源
+    * @param engine
+    */
   override def delete(engine: Engine): Unit =
     if(portToEngines.containsKey(engine.getPort)) {
       val removed = portToEngines.remove(engine.getPort)

@@ -160,9 +160,13 @@ object Utils extends Logging {
     ExecutionContext.fromExecutorService(newFixedThreadPool(threadNum, threadName, isDaemon))
   }
 
+  /**
+    * 定义默认队列：
+    */
   val defaultScheduler = {
     val scheduler = new ScheduledThreadPoolExecutor(20, threadFactory("BDP-Default-Scheduler-Thread-", true))
     scheduler.setMaximumPoolSize(20)
+    //空闲线程最大存活时间：5分钟
     scheduler.setKeepAliveTime(5, TimeUnit.MINUTES)
     scheduler
   }

@@ -97,6 +97,14 @@ class UserResourceRecordService extends Logging {
     if (existing != null) userResourceMetaDataDao.deleteById(existing.getId)
   }
 
+  /**
+    * 获取模型，且创建资源
+    * @param moduleName
+    * @param user
+    * @param creator
+    * @param requestResource
+    * @return
+    */
   def getModuleAndCreatorResource(moduleName: String, user: String, creator: String, requestResource: Resource): (Resource, Resource) = {
     val userRecords = JavaConversions.asScalaBuffer(userResourceMetaDataDao.getByUser(user))
     var moduleResource = Resource.getZeroResource(requestResource)

@@ -63,6 +63,10 @@ trait ProcessEngine extends Engine with Logging {
   override def getState: EngineState = _state
   def getInitErrorMsg = initErrorMsg
 
+
+  /**
+    * 引擎初始化
+    */
   override def init(): Unit = {
     process = processBuilder.start(DWCArgumentsParser.formatToArray(dwcArgumentsParser))
     var exitCode: Option[Int] = None
@@ -96,14 +100,21 @@ trait ProcessEngine extends Engine with Logging {
 
   protected def dealStartupLog(line: String): Unit = println(getPort + ": " + line)
 
+  /**
+    * 属性改变
+    * @param state
+    */
   protected def transition(state: EngineState): Unit = this synchronized
     _state match {
     case Error | Dead | Success =>
+      // 错误,死亡,成功状态不可更改
       warn(s"$toString attempt to change state ${_state} => $state, ignore it.")
     case _ =>
       if(state == EngineState.Starting && _state != EngineState.Starting){
+        //不能把当前状态改为启动中
         warn("Can not change current state to starting for state is "+ _state)
       }else{
+        //修改状态:  hive引擎不停的busy
         info(s"$toString change state ${_state} => $state.")
         _state = state
       }
@@ -125,15 +136,23 @@ trait ProcessEngine extends Engine with Logging {
     transition(state)
   }
 
+  /**
+    * 心跳机制
+    */
   def tryHeartbeat(): Unit = if(sender != null){
     sender.ask(RequestEngineStatus(RequestEngineStatus.Status_Only)) match {
+      //返回告警异常，则抛出异常
       case warn: WarnException => throw warn
+      //返回引擎状态，则修改引擎状态
       case r: ResponseEngineStatus => {
         transition(EngineState(r.state))
       }
     }
   }
 
+  /**
+    * 关掉引擎
+    */
   override def shutdown(): Unit = if(StringUtils.isNotEmpty(pid)) {
     info(s"try to kill $toString with pid($pid).")
     process.destroy()
@@ -151,6 +170,10 @@ trait ProcessEngine extends Engine with Logging {
     sender.send(RequestKillEngine("", Sender.getThisServiceInstance.getApplicationName, Sender.getThisServiceInstance.getInstance))
   }
 
+  /**
+    * 进程是否存在
+    * @return
+    */
   private def isProcessAlive: Boolean = {
     val r = Utils.exec(Array(JavaProcessEngineBuilder.sudoUserScript.getValue, getUser, "ps -ef | grep " +
       pid + " | grep DataWorkCloud | awk '{print \"exists_\"$2}'"), 5000l)
