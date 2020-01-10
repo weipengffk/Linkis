@@ -18,13 +18,22 @@ package com.webank.wedatasphere.linkis.protocol.engine
 
 /**
   * Created by enjoyyin on 2018/9/26.
+  * 引擎回调
   */
 object EngineCallback {
+  //应用名
   private val DWC_APPLICATION_NAME = "dwc.application.name"
+  //应用实例
   private val DWC_INSTANCE = "dwc.application.instance"
   def mapToEngineCallback(options: Map[String, String]): EngineCallback =
     EngineCallback(options(DWC_APPLICATION_NAME), options(DWC_INSTANCE))
   def callbackToMap(engineCallback: EngineCallback): Map[String, String] =
     Map(DWC_APPLICATION_NAME -> engineCallback.applicationName, DWC_INSTANCE -> engineCallback.instance)
 }
+
+/**
+  * 引擎回调样例类
+  * @param applicationName  应用名称
+  * @param instance  实体
+  */
 case class EngineCallback(applicationName: String, instance: String)

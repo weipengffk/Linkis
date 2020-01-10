@@ -25,6 +25,7 @@ import java.util.Map;
 
 /**
  * Created by enjoyyin on 2018/9/30.
+ * 请求持久化任务
  */
 public class RequestPersistTask  implements Task, QueryProtocol {
     private Long taskID;
@@ -53,6 +54,7 @@ public class RequestPersistTask  implements Task, QueryProtocol {
     /**
      * The executeApplicationName parameter refers to the service the user is looking for, such as spark python R, etc.
      * executeApplicationName 参数指的是用户所寻求的服务，比如spark python R等等
+     *
      */
     private String executeApplicationName;
     /**

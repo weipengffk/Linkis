@@ -18,6 +18,7 @@ package com.webank.wedatasphere.linkis.protocol
 
 /**
   * Created by enjoyyin on 2019/1/7.
+  * 规则服务组协议
   */
 trait IRServiceGroupProtocol extends IRProtocol with InstanceProtocol {
   val userWithCreator: UserWithCreator
@@ -25,4 +26,10 @@ trait IRServiceGroupProtocol extends IRProtocol with InstanceProtocol {
   def user = userWithCreator.user
   def creator = userWithCreator.creator
 }
+
+/**
+  * 样例类：
+  * @param user       用户
+  * @param creator   创建者
+  */
 case class UserWithCreator(user: String, creator: String)

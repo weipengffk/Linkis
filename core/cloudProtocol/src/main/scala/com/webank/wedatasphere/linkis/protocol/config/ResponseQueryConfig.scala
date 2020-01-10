@@ -20,9 +20,13 @@ import java.util
 
 /**
   * Created by enjoyyin on 2018/10/17.
+  * 返回查询特性
   */
 class ResponseQueryConfig extends ConfigProtocol {
+  // 定义键值对
   private var keyAndValue: util.Map[String, String] = _
+  //返回键值对
   def getKeyAndValue :util.Map[String, String] = keyAndValue
+  //设置键值对
   def setKeyAndValue(keyAndValue :util.Map[String, String]) :Unit = this.keyAndValue =keyAndValue
 }

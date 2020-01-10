@@ -19,6 +19,7 @@ package com.webank.wedatasphere.linkis.protocol.query;
 
 /**
  * Created by enjoyyin on 2018/9/30.
+ * 请求更新任务
  */
 public class RequestUpdateTask extends RequestPersistTask implements QueryProtocol {
 }

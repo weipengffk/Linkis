@@ -18,10 +18,17 @@ package com.webank.wedatasphere.linkis.protocol
 
 /**
   * Created by enjoyyin on 2019/1/7.
+  * 重试协议特性
   */
 trait RetryableProtocol extends Protocol {
+  /**
+    * 重试次数
+    */
   val retryNum = 2
+  //时间
   val period = 1000l
+  //最大时间
   val maxPeriod = 3000l
+  //重试异常
   val retryExceptions = Array.empty[Class[_  <: Throwable]]
 }

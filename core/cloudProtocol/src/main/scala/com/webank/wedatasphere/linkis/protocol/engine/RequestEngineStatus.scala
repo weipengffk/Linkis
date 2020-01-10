@@ -25,6 +25,7 @@ import com.webank.wedatasphere.linkis.protocol.RetryableProtocol
   */
 case class RequestEngineStatus(messageType: Int) extends RetryableProtocol
 object RequestEngineStatus {
+
   val Status_Only = 1
   val Status_Overload = 2
   val Status_Concurrent = 3

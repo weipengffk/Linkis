@@ -18,11 +18,21 @@ package com.webank.wedatasphere.linkis.protocol
 
 /**
   * Created by enjoyyin on 2019/1/14.
+  * 广播协议特性
   */
 trait BroadcastProtocol extends Protocol {
 
+  /**
+    * 失败是否抛出异常
+    */
   val throwsIfAnyFailed = false
+  /**
+    * 跳过广播
+    */
   var skipBroadcast = false
+  /**
+    * 定义实例数组
+    */
   val instances = Array.empty[String]
 
 }

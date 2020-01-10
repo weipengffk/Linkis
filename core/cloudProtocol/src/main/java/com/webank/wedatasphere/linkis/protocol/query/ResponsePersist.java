@@ -25,9 +25,17 @@ import java.util.Map;
  * Created by enjoyyin on 2018/9/30.
  * Description: ResponsePersist is the content type returned by the query module to the entity
  * Description: ResponsePersist 是query模块向entrance返回的内容类型
+ *
+ * 返回持久化
  */
 public class ResponsePersist implements QueryProtocol {
+    /**
+     * 状态
+     */
     private Integer status;
+    /**
+     * 信息
+     */
     private String msg;
     private Map<String,Object> data;
 

@@ -22,10 +22,14 @@ import com.webank.wedatasphere.linkis.protocol.RetryableProtocol
 
 /**
   * Created by enjoyyin on 2018/9/18.
+  * 请求引擎特性
   */
 trait RequestEngine extends RetryableProtocol {
+  //创建者
   val creator: String
+  //用户
   val user: String
+  //属性
   val properties: util.Map[String, String]  //Other parameter information(其他参数信息)
 }
 object RequestEngine {

@@ -21,6 +21,7 @@ package com.webank.wedatasphere.linkis.protocol.query;
  * Created by enjoyyin on 2018/9/30.
  * Need to inherit the relationship, to fill in the rest of the query module restful code
  * 需要继承关系,方便query模块restful代码的填写
+ * 请求插入任务
  */
 public class RequestQueryTask extends RequestPersistTask implements QueryProtocol {
 

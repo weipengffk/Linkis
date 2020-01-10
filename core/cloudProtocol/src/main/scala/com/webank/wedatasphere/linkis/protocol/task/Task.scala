@@ -19,11 +19,20 @@ package com.webank.wedatasphere.linkis.protocol.task
 /**
   * created by enjoyyin on 2018/10/8
   * Description:
+  * 定义任务类特性
   */
 trait Task {
 
+  /**
+    * 获取实例
+    * @return
+    */
   def getInstance: String
 
+  /**
+    *获取执行id
+    * @return
+    */
   def getExecId: String
 
   def setInstance(instance: String):Unit

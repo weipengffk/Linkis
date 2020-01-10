@@ -21,6 +21,7 @@ import com.webank.wedatasphere.linkis.protocol.task.Task;
 /**
  * created by enjoyyin on 2018/10/9
  * Description:
+ * 请求读取所以任务
  */
 public class RequestReadAllTask implements QueryProtocol {
     /**

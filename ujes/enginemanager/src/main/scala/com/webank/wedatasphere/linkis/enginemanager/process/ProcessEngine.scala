@@ -137,7 +137,7 @@ trait ProcessEngine extends Engine with Logging {
   }
 
   /**
-    * 心跳机制
+    * 引擎的心跳机制
     */
   def tryHeartbeat(): Unit = if(sender != null){
     sender.ask(RequestEngineStatus(RequestEngineStatus.Status_Only)) match {

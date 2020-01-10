@@ -18,6 +18,7 @@ package com.webank.wedatasphere.linkis.protocol
 
 /**
   * Created by enjoyyin on 2019/1/14.
+  * 规则通用协议
   */
 trait IRCommonProtocol extends IRProtocol {
   val rule: String

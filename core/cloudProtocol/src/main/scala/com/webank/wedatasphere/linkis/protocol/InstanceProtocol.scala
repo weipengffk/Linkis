@@ -18,9 +18,13 @@ package com.webank.wedatasphere.linkis.protocol
 
 /**
   * Created by enjoyyin on 2019/1/7.
+  * 实例协议特性
   */
 trait InstanceProtocol extends Protocol {
 
+  /**
+    * 选择实例
+    */
   var choseInstance: Option[String] = None
 
 }

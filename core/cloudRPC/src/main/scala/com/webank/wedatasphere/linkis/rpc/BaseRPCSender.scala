@@ -35,14 +35,30 @@ import scala.runtime.BoxedUnit
 
 /**
   * Created by enjoyyin on 2018/8/29.
+  * RPC发送者
   */
 private[rpc] class BaseRPCSender extends Sender with Logging {
   private var name: String = _
   private var rpc: RPCReceiveRemote = _
 
+  /**
+    * 获取 RPC拦截器
+    * @return
+    */
   protected def getRPCInterceptors: Array[RPCInterceptor] = Array.empty
 
+  /**
+    * 创建RPC拦截链
+    * @return
+    */
   protected def createRPCInterceptorChain(): RPCInterceptorChain = new BaseRPCInterceptorChain(0, getRPCInterceptors, getApplicationName)
+
+  /**
+    * 创建RPC拦截交换
+    * @param protocol
+    * @param op
+    * @return
+    */
   protected def createRPCInterceptorExchange(protocol: Protocol, op: => Any): RPCInterceptorExchange =
     new BaseRPCInterceptorExchange(protocol, () => op)
 
